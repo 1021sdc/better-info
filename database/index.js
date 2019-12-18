@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/airbnbInfo', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/airbnbInfo', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 
 let dbSchema = mongoose.Schema({
     id: Number,
