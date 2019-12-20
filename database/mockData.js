@@ -15,11 +15,11 @@ function generateListing() {
     let hostImage = Math.floor(Math.random()* 1000) + 1;
     console.log('HOSTIMAGE: ',hostImage);
 
-    if(hostImage.toString().length < 2) {
-        hostImage = '00' + hostImage.toString();
-    } else if (hostImage.toString().length === 1) {
-        hostImage = '0' + hostImage.toString();
-    }
+    // if(hostImage.toString().length < 2) {
+    //     hostImage = '00' + hostImage.toString();
+    // } else if (hostImage.toString().length === 1) {
+    //     hostImage = '0' + hostImage.toString();
+    // }
 
     function numberOfGuests() {
         if (roomInfoRandomArray === 'Private room') {
@@ -58,7 +58,7 @@ function generateListing() {
         city: city,
         title: `${titleRandomArray} ${city}`,
         // hostImage:`https://s3-us-west-1.amazonaws.com/airbnb-host-photos/host${hostImage}.jpg`,
-        hostImage: `https://sdc-info-hosts.s3-us-west-2.amazonaws.com/hosts/pic_${hostImage}.jpg`,
+        hostImage: `https://sdc-info-hosts.s3-us-west-2.amazonaws.com/host/pic${hostImage}.jpg`,
         roomInfo: roomInfoRandomArray,
         numberOfGuests: numberOfGuests(),
         numberOfBedrooms: bedrooms,
@@ -70,21 +70,21 @@ function generateListing() {
         isGreatCheckIn: booleanGenerator(),
         isSelfCheckIn: booleanGenerator(),
         description: faker.lorem.paragraph() + faker.lorem.paragraph(),
-        amenities: {
-            basic: {
-                hasWiFi: true,
-                hasEssentials: true,
-                hasCable: true,
-                hasLaptopSpace: true,
-                hasHeating: true,
-            },
-            dining: {
-                hasKitchen: true
-            },
-            bedAndBath: {
-                hasPillowsBlankets: true
-            },
-        },
+        // amenities: {
+        //     basic: {
+        //         hasWiFi: true,
+        //         hasEssentials: true,
+        //         hasCable: true,
+        //         hasLaptopSpace: true,
+        //         hasHeating: true,
+        //     },
+        //     dining: {
+        //         hasKitchen: true
+        //     },
+        //     bedAndBath: {
+        //         hasPillowsBlankets: true
+        //     },
+        // },
         sleepingArrangements: {
             bedroom: bedrooms
         }

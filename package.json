@@ -9,7 +9,8 @@
     "react-dev": "webpack -d --watch",
     "start": "node server/index.js",
     "test": "jest",
-    "seed": "node database/mockData.js"
+    "seed": "node database/mockData.js",
+    "db:seed": "node database/realMockData.js"
   },
   "repository": {
     "type": "git",
@@ -56,6 +57,7 @@
     "jquery": "^3.4.1",
     "mongoose": "^5.8.1",
     "nodemon": "^1.19.4",
+    "objects-to-csv": "^1.3.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-modal": "^3.11.1",

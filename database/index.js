@@ -17,8 +17,8 @@ let dbSchema = mongoose.Schema({
     isGreatCheckIn: Boolean,
     isSelfCheckIn: Boolean,
     description: String,
-    amenities: Object,
-    sleepingArrangements: Object,
+    // amenities: Object,
+    // sleepingArrangements: Object,
 });
 
 let db = mongoose.model('Listing', dbSchema);
