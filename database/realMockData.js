@@ -1,6 +1,5 @@
 const faker = require('faker');
 const fs = require('fs');
-const ObjectsToCsv = require('objects-to-csv');
 
 let titleRandom = ['Perfectly located', 'Light & spacious garden flat', 'Private Modern Guesthouse', 'Ocean View Hideaway', 'Perfect Haven by Golden Gate', 'Private Backyard Cottage', 'Sunny Room Heart of', 'Luxury Gold Coast', 'Central Surfers Studio OceanView', 'Broken Head Bodhi Treehouse', 'Mountain tiny house', 'Blue Mountains Cottage', 'The Copa Cabana', 'The Tree House', 'Stroll Around Victoria Park', 'Entire Home with Opera House views', 'Luxury Apartment in the heart of', 'Stylish inner-city home', 'Little Paradise', 'Stunning River View' ]; 
 
@@ -71,15 +70,45 @@ function generateListing() {
 
 // let dbData = generateListings();
 
-(async () => {
+// (async () => {
 
-    for(let i= 0; i <= 10000000; i++) {
-        let dbData = [generateListing()];
-        const csv = new ObjectsToCsv(dbData);
-        await csv.toDisk('./data.csv', {append: true});
+//     for(let i= 0; i <= 10; i++) {
+//         let dbData = [generateListing()];
+//         const csv = new ObjectsToCsv(dbData);
+//         await csv.toDisk('./data2.csv', {append: true});
 
+//     }
+
+
+//     console.log('done');
+// })();
+
+const writeListings = fs.createWriteStream('./data2.csv', {flags: 'a'});
+
+function seed(writer, encoding, callback) {
+    let i = 10000000;
+    let listingid = 0;
+    function write () {
+        let ok = true;
+        do {
+            i -= 1;
+            listingid += 1;
+            let dbData = generateListing();
+            dbData.listingid = listingid;
+            let data = `${dbData.listingid},${dbData.city}, ${dbData.description},${dbData.hostimage},${dbData.isgreatcheckin},${dbData.isgreatlocation},${dbData.isselfcheckin},${dbData.issparklingclean},${dbData.issuperhost},${dbData.numberofbaths},${dbData.numberofbedrooms},${dbData.numberofbeds},${dbData.numberofguests},${dbData.roominfo},${dbData.title}\n`;
+            if(i === 0) {
+                writer.write(data, encoding, callback);
+            } else {
+                ok = writer.write(data, encoding);
+            }
+        } while (i > 0 && ok);
+        if( i > 0) {
+            writer.once('drain', write);
+        }
     }
+    write();
+}
 
-
-    console.log('done');
-})();
+seed(writeListings, 'utf-8', () => {
+    writeListings.end();
+});
