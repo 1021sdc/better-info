@@ -83,10 +83,11 @@ function generateListing() {
 //     console.log('done');
 // })();
 
-const writeListings = fs.createWriteStream('./data2.csv', {flags: 'a'});
+const writeListings = fs.createWriteStream('./data.csv', {flags: 'a'});
 
 function seed(writer, encoding, callback) {
-    let i = 10000000;
+    // let i = 10000000;
+    let i = 10;
     let listingid = 0;
     function write () {
         let ok = true;
@@ -94,7 +95,7 @@ function seed(writer, encoding, callback) {
             i -= 1;
             listingid += 1;
             let dbData = generateListing();
-            dbData.listingid = listingid;
+            dbData.listingid = listingid; // remember to remove from script when recreating db info on EC2, decreases load in time to postgres, also remember to add in listingid col after adding into table
             let data = `${dbData.listingid},${dbData.city}, ${dbData.description},${dbData.hostimage},${dbData.isgreatcheckin},${dbData.isgreatlocation},${dbData.isselfcheckin},${dbData.issparklingclean},${dbData.issuperhost},${dbData.numberofbaths},${dbData.numberofbedrooms},${dbData.numberofbeds},${dbData.numberofguests},${dbData.roominfo},${dbData.title}\n`;
             if(i === 0) {
                 writer.write(data, encoding, callback);
