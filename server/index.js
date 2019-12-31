@@ -1,3 +1,4 @@
+const nr = require('newrelic');
 const express = require('express');
 const app = express(); 
 const bodyParser = require('body-parser')
@@ -17,7 +18,6 @@ app.get('/listings/:id', function(req, res) {
           console.log(err);
           res.status(500).send();
         } else {
-          console.log(info.rows[0]);
           res.send({
             city: info.rows[0].city,
             title: info.rows[0].title,

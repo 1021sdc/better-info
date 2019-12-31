@@ -2,6 +2,7 @@ node_modules
 package-lock.json
 client/dist/bundle.js
 .DS_Store
-data.csv
 data2.csv
 database/oldIndex.js
+newrelic.js
+newrelic_agent.log

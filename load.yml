@@ -1,0 +1,14 @@
+config:
+  target: "http://localhost:3002"
+  phases:
+    - duration: 1
+      arrivalRate: 10000
+  processor: "./generate.js"
+
+scenarios:
+  - name: "Sample gets"
+    flow:
+    # call generateLisiting() to supply the correct url id
+    - function: "generateListing"
+    - get:
+        url: "/?id={{ id }}"
