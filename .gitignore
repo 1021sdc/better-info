@@ -4,3 +4,4 @@ client/dist/bundle.js
 .DS_Store
 data.csv
 data2.csv
+database/oldIndex.js
