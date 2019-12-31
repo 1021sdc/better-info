@@ -17,8 +17,24 @@ app.get('/listings/:id', function(req, res) {
           console.log(err);
           res.status(500).send();
         } else {
-          console.log(info);
-          res.status(201).send();
+          console.log(info.rows[0]);
+          res.send({
+            city: info.rows[0].city,
+            title: info.rows[0].title,
+            hostImage: info.rows[0].hostimage,
+            roomInfo: info.rows[0].roominfo,
+            numberOfGuests: info.rows[0].numberofguests,
+            numberOfBedrooms: info.rows[0].numberofbedrooms,
+            numberOfBaths: info.rows[0].numberofbaths,
+            numberOfBeds: info.rows[0].numberofbeds,
+            isSuperHost: info.rows[0].issuperhost,
+            isGreatCheckIn: info.rows[0].isgreatcheckin,
+            isSparklingClean: info.rows[0].issparklingclean,
+            isGreatLocation: info.rows[0].isgreatlocation,
+            isSelfCheckin: info.rows[0].isselfcheckin,
+            description: info.rows[0].description,
+            listingId: info.rows[0].listingid,
+          });
         }
       })
 })
