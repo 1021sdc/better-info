@@ -6,3 +6,4 @@ data2.csv
 database/oldIndex.js
 newrelic.js
 newrelic_agent.log
+generateListing.js

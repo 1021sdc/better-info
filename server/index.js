@@ -31,7 +31,7 @@ app.get('/listings/:id', function(req, res) {
             isGreatCheckIn: info.rows[0].isgreatcheckin,
             isSparklingClean: info.rows[0].issparklingclean,
             isGreatLocation: info.rows[0].isgreatlocation,
-            isSelfCheckin: info.rows[0].isselfcheckin,
+            isSelfCheckIn: info.rows[0].isselfcheckin,
             description: info.rows[0].description,
             listingId: info.rows[0].listingid,
           });
@@ -39,34 +39,19 @@ app.get('/listings/:id', function(req, res) {
       })
 })
 
-
-
-// db.findOne({id: req.params.id}).exec((err, docs) => {
-//     if (err) {
-//       res.status(500).send();
-//     } else {
-//       res.status(200).send(docs);
-//     }
-//   })
-
-// app.post('/listings/', (req, res) => {
-//   const host = req.body;
-//   if(host.id) {
-//     db.create(host, (err) => {
-//       if(err) {
-//         console.log(err);
-//         res.status(500).send();
-//       } else {
-//         res.status(201).send();
-//       }
-//     });
-//   } else {
-//     res.status(500).send();
-//   }
-// });
+app.post('/listings/', (req, res) => {
+  const insert = 'INSERT INTO listings(city, title, hostimage, roominfo, numberofguests, numberofbedrooms, numberofbaths, numberofbeds, issuperhost, isgreatcheckin, issparklingclean, isgreatlocation, isselfcheckin, description) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)';
+  const values = [req.body.listing.city, req.body.listing.title, req.body.listing.hostImage, req.body.listing.roomInfo, req.body.listing.numberOfGuests, req.body.listing.numberOfBedrooms, req.body.listing.numberOfBaths, req.body.listing.numberOfBeds, req.body.listing.isSuperHost, req.body.listing.isGreatCheckIn, req.body.listing.isSparklingClean, req.body.listing.isGreatLocation, req.body.listing.isSelfCheckIn, req.body.listing.description];
+  db.query(insert, values)
+  .then( () => res.status(201).send())
+  .catch( (err) => {
+    console.log(err);
+    res.status(500).send();
+  })
+});
 
 // app.put('/listings/:id', (req, res) => {
-//   db.findOneAndUpdate({id: req.body.id}, req.body, (err) => {
+//   db.findOneAndUpdate({id: req.body.listing.id}, req.body, (err) => {
 //     if(err) {
 //       res.status(500).send();
 //     } else {

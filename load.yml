@@ -2,13 +2,21 @@ config:
   target: "http://localhost:3002"
   phases:
     - duration: 1
-      arrivalRate: 10000
+      arrivalRate: 1000
   processor: "./generate.js"
 
 scenarios:
   - name: "Sample gets"
     flow:
-    # call generateLisiting() to supply the correct url id
-    - function: "generateListing"
+    # call generate() to supply the correct url id
+    - function: "generate"
     - get:
         url: "/?id={{ id }}"
+  - name: "Sample posts"
+    flow:
+    # call generateListing() to supply correct body obj
+    - function: "generateListing"
+    - post:
+        url: "/listings/"
+        json:
+          listing: "{{ listing }}"
