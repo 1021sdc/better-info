@@ -7,3 +7,6 @@ database/oldIndex.js
 newrelic.js
 newrelic_agent.log
 generateListing.js
+package.txt
+database/config.js
+.dockerignore
