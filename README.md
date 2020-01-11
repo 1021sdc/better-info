@@ -1,5 +1,28 @@
 # Listings Module
 
+## SDC README
+
+CRUD ROUTES:
+
+GET ('/listings/:id')
+- express route which serves up one listing info object
+
+POST ('/listings')
+- express route which accepts an object to be added to the listing db
+
+PUT ('/listings/:id')
+- update listings with given id with the request body
+
+DELETE ('/listings/:id')
+- delete the database entry with the given request param id
+
+
+
+
+
+
+## Older FEC
+
 > Listing Description module for a short term rental housing app
 
 ![](Listings.gif)
