@@ -1,28 +1,5 @@
 # Listings Module
 
-## SDC README
-
-CRUD ROUTES:
-
-GET ('/listings/:id')
-- express route which serves up one listing info object
-
-POST ('/listings')
-- express route which accepts an object to be added to the listing db
-
-PUT ('/listings/:id')
-- update listings with given id with the request body
-
-DELETE ('/listings/:id')
-- delete the database entry with the given request param id
-
-
-
-
-
-
-## Older FEC
-
 > Listing Description module for a short term rental housing app
 
 ![](Listings.gif)
@@ -45,6 +22,7 @@ $ npm run seed
 # compile/transpile files with webpack
 $ npm run react-dev
 ```
+Be aware that directly running the seeding script will generate a csv with 10Million entries, modify as needed
 
 ## <a id="requirements">Requirements</a>
 * [npm](https://www.npmjs.com/)
@@ -52,8 +30,8 @@ $ npm run react-dev
 * [Git](https://git-scm.com/)
 
 ## <a id="related_projects">Related Projects</a>
-* https://github.com/hacker-home/Airbnb-photos
-* https://github.com/hacker-home/Airbnb-booking
-* https://github.com/hacker-home/Airbnb-reviews
-* https://github.com/hacker-home/Airbnb-more-homes
+* https://github.com/1021sdc/booking
+* https://github.com/1021sdc/better-photos-and-hackers
+* https://github.com/1021sdc/More-homes
+* https://github.com/1021sdc/reviews
 
